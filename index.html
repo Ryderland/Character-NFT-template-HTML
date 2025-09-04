@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Character NFT template</title>
+    <title>Throw-Your-Money-Away</title>
     <meta property="og:title" content="Character NFT template" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -112,62 +112,64 @@
         </section>
         <section class="home-cards2"></section>
         <div class="home-container2">
-          <div class="home-container3">
-            <div
-              style="position:relative; width:100%; height:100vh; overflow:hidden;"
-            >
-              <!-- The draggable image -->
-              <img
-                id="myImage"
-                src="https://via.placeholder.com/100"
-                style="position:absolute; width:100px;"
-              />
+          <div class="home-container3" style="width:100%; height:600px;"></div>
 
-              <!-- Matter.js physics -->
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-              <script>
-                const { Engine, Render, Runner, Bodies, World, Mouse, MouseConstraint, Events } = Matter;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script>
+  const { Engine, Render, Runner, Bodies, World, Mouse, MouseConstraint } = Matter;
+
+  const container = document.querySelector('.home-container3');
   const engine = Engine.create();
   const world = engine.world;
 
-  // Render canvas inside a specific container
-  const container = document.querySelector('.home-container3');
+  // Render inside container
   const render = Render.create({
     element: container,
     engine: engine,
-    options: { width: container.offsetWidth, height: container.offsetHeight, wireframes: false, background: 'transparent' }
+    options: {
+      width: container.offsetWidth,
+      height: container.offsetHeight,
+      wireframes: false,
+      background: '#fff'
+    }
   });
+
   Render.run(render);
   Runner.run(Runner.create(), engine);
 
-  // Physics body for image
-  const img = document.getElementById('physicsImage');
-  const body = Bodies.rectangle(200, 200, 100, 100, { restitution: 0.8 });
-  World.add(world, body);
-
-  // Sync DOM image with physics body
-  Events.on(engine, 'afterUpdate', () => {
-    img.style.left = body.position.x - 50 + 'px';
-    img.style.top = body.position.y - 50 + 'px';
-    img.style.transform = `rotate(${body.angle}rad)`;
+  // Physics body with image sprite
+  const box = Bodies.rectangle(300, 100, 100, 100, {
+    restitution: 0.8,
+    render: {
+      sprite: {
+        texture: 'https://via.placeholder.com/100', // replace with your actual image
+        xScale: 1,
+        yScale: 1
+      }
+    }
   });
+  World.add(world, box);
 
   // Ground + walls
+  const width = container.offsetWidth;
+  const height = container.offsetHeight;
   World.add(world, [
-    Bodies.rectangle(container.offsetWidth/2, container.offsetHeight, container.offsetWidth, 50, { isStatic: true }),
-    Bodies.rectangle(container.offsetWidth/2, 0, container.offsetWidth, 50, { isStatic: true }),
-    Bodies.rectangle(0, container.offsetHeight/2, 50, container.offsetHeight, { isStatic: true }),
-    Bodies.rectangle(container.offsetWidth, container.offsetHeight/2, 50, container.offsetHeight, { isStatic: true })
+    Bodies.rectangle(width/2, height, width, 50, { isStatic: true }), // floor
+    Bodies.rectangle(width/2, 0, width, 50, { isStatic: true }),       // ceiling
+    Bodies.rectangle(0, height/2, 50, height, { isStatic: true }),     // left wall
+    Bodies.rectangle(width, height/2, 50, height, { isStatic: true })  // right wall
   ]);
 
-  // Mouse drag + throw
+  // Mouse control
   const mouse = Mouse.create(render.canvas);
-  const mouseConstraint = MouseConstraint.create(engine, { mouse, constraint: { stiffness: 0.2 } });
+  const mouseConstraint = MouseConstraint.create(engine, {
+    mouse: mouse,
+    constraint: { stiffness: 0.2 }
+  });
   World.add(world, mouseConstraint);
   render.mouse = mouse;
-              </script>
-            </div>
-          </div>
+</script>
+
         </div>
         <div>
           <div class="home-container5">
