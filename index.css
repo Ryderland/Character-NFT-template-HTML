@@ -125,6 +125,13 @@
   padding-bottom: 120px;
   justify-content: flex-start;
 }
+
+.clip-container {
+  position: relative;   /* defines the clipping box */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;     /* cut off anything outside */
+}
  
 .home-image5 {
   top: -232px;
@@ -134,6 +141,8 @@
   margin: auto;
   position: absolute;
   object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
 }
  
 .home-container2 {
