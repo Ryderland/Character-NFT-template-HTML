@@ -212,12 +212,12 @@
     Matter.World.add(engine.world, box);
     
    // Invisible platform pieces
-const platformLeft = Matter.Bodies.rectangle(width * 0.25 - (492/4), height * 0.6, width * 0.5- (492/2), 30, { 
+const platformLeft = Matter.Bodies.rectangle(width * 0.25 - (490/4), height * 0.7, width * 0.5- (490/2), 200, { 
   isStatic: true,
   render: { visible: false }
 });
 
-const platformRight = Matter.Bodies.rectangle(width * 0.75+(492/4), height * 0.6, width * 0.5 - (492/2), 30, { 
+const platformRight = Matter.Bodies.rectangle(width * 0.75+(490/4), height * 0.7, width * 0.5 - (490/2), 200, { 
   isStatic: true,
   render: { visible: false }
 });
