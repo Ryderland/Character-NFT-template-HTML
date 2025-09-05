@@ -201,7 +201,7 @@
     Matter.Runner.run(runner, engine);
 
     // The physics body that uses your image as a sprite
-    const box = Matter.Bodies.rectangle(150, 200, 100, 100, {
+    const box = Matter.Bodies.rectangle(150, 500, 100, 100, {
       restitution: 0.8,
       render: {
         sprite: {
@@ -214,12 +214,12 @@
     Matter.World.add(engine.world, box);
     
    // Invisible platform pieces
-const platformLeft = Matter.Bodies.rectangle(width * 0.25 - (490/4), height * 0.7, width * 0.5- (490/2), 200, { 
+const platformLeft = Matter.Bodies.rectangle(width * 0.25 - (490/4), height * 0.9, width * 0.5- (490/2), 200, { 
   isStatic: true,
   render: { visible: false }
 });
 
-const platformRight = Matter.Bodies.rectangle(width * 0.75+(490/4), height * 0.7, width * 0.5 - (490/2), 200, { 
+const platformRight = Matter.Bodies.rectangle(width * 0.75+(490/4), height * 0.9, width * 0.5 - (490/2), 200, { 
   isStatic: true,
   render: { visible: false }
 });
