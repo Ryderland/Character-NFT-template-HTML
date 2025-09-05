@@ -104,13 +104,14 @@
           />
         </section>
         <section class="home-cards2">
+        <div class="clip-container">
         <img
             src="public/Icons/hdgfh.png"
             style="z-index:10; pointer-events:none;"
             oncontextmenu="return false;"
             alt="image"
             class="home-image5"
-          /></section>
+          /> </div></section>
         <div class="home-container2">
         <div id="physicsArea" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0;"></div>
 
@@ -243,6 +244,12 @@ Matter.World.add(engine.world, [platformLeft, platformRight]);
     });
     Matter.World.add(engine.world, mouseConstraint);
     render.mouse = mouse;
+    
+    Matter.Events.on(engine, "afterUpdate", function () {
+    if (box.position.y > 600) {   // <-- adjust height trigger
+      window.location.href = "https://www.paypal.com/donate/?hosted_button_id=YOUR_ID";
+    }
+    });
 
     // Handle resize so bounds stay correct
     window.addEventListener('resize', () => {
