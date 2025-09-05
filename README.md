@@ -1,1 +1,1 @@
-# Character-NFT-template-HTML
+# Throw Your Money Away
