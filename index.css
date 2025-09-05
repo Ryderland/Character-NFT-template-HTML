@@ -109,6 +109,8 @@ html, body {
   width: 502px;
   height: 202px;
   object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
 }
  
 .home-image4 {
@@ -119,6 +121,8 @@ html, body {
   position: absolute;
   align-self: center;
   object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
 }
  
 .home-cards2 {
