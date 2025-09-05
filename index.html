@@ -246,11 +246,7 @@ Matter.World.add(engine.world, [platformLeft, platformRight]);
     Matter.World.add(engine.world, mouseConstraint);
     render.mouse = mouse;
     
-    Matter.Events.on(engine, "afterUpdate", function () {
-    if (box.position.y > 600) {   // <-- adjust height trigger
-      window.location.href = "https://www.paypal.com/donate/?business=LNNLGWFQ7AWAU&no_recurring=0&item_name=You+don%27t+even+really+need+it+right?&currency_code=USD";
-    }
-    });
+   
 
     // Handle resize so bounds stay correct
     window.addEventListener('resize', () => {
@@ -269,6 +265,17 @@ Matter.World.add(engine.world, [platformLeft, platformRight]);
       Matter.Body.setPosition(walls[2], { x: -t / 2, y: h / 2 });
       Matter.Body.setPosition(walls[3], { x: w + t / 2, y: h / 2 });
     });
+    // Assuming 'box' is your Matter.js body
+Matter.Events.on(engine, "afterUpdate", function () {
+  const canvasHeight = window.innerHeight;   // total screen height
+  const triggerY = canvasHeight * 0.75;      // bottom 1/4 starts here
+
+  if (box.position.y > triggerY) {
+    // Redirect to PayPal donate page
+    window.location.href = "https://www.paypal.com/donate/?hosted_button_id=YOUR_ID";
+  }
+});
+
   });
 </script>
   </body>
