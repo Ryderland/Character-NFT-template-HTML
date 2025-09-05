@@ -288,6 +288,12 @@ Matter.Events.on(engine, "afterUpdate", function () {
     //window.location.href = "https://www.paypal.com/donate/?business=LNNLGWFQ7AWAU&no_recurring=0&item_name=Do+you+really+need+all+that+money?&currency_code=USD";
     window.open("https://www.paypal.com/donate/?business=LNNLGWFQ7AWAU&no_recurring=0&item_name=Do+you+really+need+all+that+money?&currency_code=USD", "_blank");
   }
+  if (box.position.y > 1250) { 
+    // If the object is in the bottom 1/4 of the screen
+    box.render.opacity = 0; // make invisible
+  } else {
+    box.render.opacity = 1; // restore visibility
+  }
 });
 
   });
