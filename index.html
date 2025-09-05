@@ -91,13 +91,6 @@
         <div class="home-image1"></div>
         <section class="home-cards1">
           <img
-            id="myImage"
-            alt="image"
-            src="public/Icons/mone-1500w.png"
-            loading="lazy"
-            class="home-image2"
-          />
-          <img
             alt="image"
             src="public/Icons/123-300h.png"
             loading="eager"
@@ -112,7 +105,8 @@
         </section>
         <section class="home-cards2"></section>
         <div class="home-container2">
-        <div id="physicsArea" style="position:relative;width:100%;height:600px;"></div>
+        <div id="physicsArea" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0;"></div>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 
         </div>
@@ -177,8 +171,9 @@
     const container = document.getElementById('physicsArea');
     if (!container) return;
 
-    const width = container.clientWidth || 600;
-    const height = container.clientHeight || 400;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
 
     const engine = Matter.Engine.create();
     const render = Matter.Render.create({
@@ -202,12 +197,18 @@
       render: {
         sprite: {
           texture: 'public/Icons/mone-1500w.png', // <-- change if needed
-          xScale: 0.4,
-          yScale: 0.4
+          xScale: 0.15,
+          yScale: 0.15
         }
       }
     });
     Matter.World.add(engine.world, box);
+    
+    const platform = Matter.Bodies.rectangle(width / 2, 400, 300, 20, { 
+      isStatic: true,
+      render: { fillStyle: 'green' } // color
+    });
+    Matter.World.add(engine.world, platform);
 
     // Walls so it stays in view
     const t = 50; // wall thickness
