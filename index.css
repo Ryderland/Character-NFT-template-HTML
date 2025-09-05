@@ -114,7 +114,6 @@
 .home-cards2 {
   gap: var(--dl-layout-space-fiveunits);
   width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
   display: flex;
   position: relative;
   max-width: 1440px;
@@ -124,6 +123,17 @@
   padding-right: var(--dl-layout-space-fiveunits);
   flex-direction: column;
   padding-bottom: 120px;
+  justify-content: flex-start;
+}
+ 
+.home-image5 {
+  top: -234px;
+  left: 447px;
+  width: 494px;
+  height: 769px;
+  margin: auto;
+  position: absolute;
+  object-fit: cover;
 }
  
 .home-container2 {
