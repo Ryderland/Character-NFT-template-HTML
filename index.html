@@ -269,6 +269,9 @@ Matter.World.add(engine.world, [platformLeft, platformRight]);
       Matter.Body.setPosition(walls[2], { x: -t / 2, y: h / 2 });
       Matter.Body.setPosition(walls[3], { x: w + t / 2, y: h / 2 });
     });
+
+let redirected = false;
+
     // Assuming 'box' is your Matter.js body
 Matter.Events.on(engine, "afterUpdate", function () {
   const canvasHeight = window.innerHeight;   // total screen height
