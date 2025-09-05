@@ -86,7 +86,7 @@
             alt="image"
             class="home-image5"
           /> 
-        <div id="physicsArea" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0;"></div>
+        <div id="physicsArea" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:3;"></div>
     <link rel="stylesheet" href="./style.css" />
     <div>
       <link href="./index.css" rel="stylesheet" />
@@ -223,12 +223,12 @@
     Matter.World.add(engine.world, box);
     
    // Invisible platform pieces
-const platformLeft = Matter.Bodies.rectangle(width * 0.25 - (490/4), height * 0.58, width * 0.5- (490/2), 200, { 
+const platformLeft = Matter.Bodies.rectangle(width * 0.25 - (490/4), height * 0.595, width * 0.5- (490/2), 200, { 
   isStatic: true,
   render: { visible: false }
 });
 
-const platformRight = Matter.Bodies.rectangle(width * 0.75+(490/4), height * 0.58, width * 0.5 - (490/2), 200, { 
+const platformRight = Matter.Bodies.rectangle(width * 0.75+(490/4), height * 0.595, width * 0.5 - (490/2), 200, { 
   isStatic: true,
   render: { visible: false }
 });
