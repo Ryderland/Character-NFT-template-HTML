@@ -105,7 +105,8 @@
         </section>
         <section class="home-cards2">
         <img
-            src="public/Icons/hdgfh-800h.png"
+            src="public/Icons/hdgfh.png"
+            style="z-index:10;"
             alt="image"
             class="home-image5"
           /></section>
@@ -197,7 +198,7 @@
     Matter.Runner.run(runner, engine);
 
     // The physics body that uses your image as a sprite
-    const box = Matter.Bodies.rectangle(150, 80, 100, 100, {
+    const box = Matter.Bodies.rectangle(150, 200, 100, 100, {
       restitution: 0.8,
       render: {
         sprite: {
@@ -209,11 +210,19 @@
     });
     Matter.World.add(engine.world, box);
     
-    const platform = Matter.Bodies.rectangle(width / 2, 400, 300, 20, { 
-      isStatic: true,
-      render: { fillStyle: 'green' } // color
-    });
-    Matter.World.add(engine.world, platform);
+   // Invisible platform pieces
+const platformLeft = Matter.Bodies.rectangle(width * 0.25 - (492/4), height * 0.6, width * 0.5- (492/2), 30, { 
+  isStatic: true,
+  render: { visible: false }
+});
+
+const platformRight = Matter.Bodies.rectangle(width * 0.75+(492/4), height * 0.6, width * 0.5 - (492/2), 30, { 
+  isStatic: true,
+  render: { visible: false }
+});
+
+Matter.World.add(engine.world, [platformLeft, platformRight]);
+
 
     // Walls so it stays in view
     const t = 50; // wall thickness
