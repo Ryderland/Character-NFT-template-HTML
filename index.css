@@ -1,6 +1,10 @@
-body {
+html, body {
   margin: 0;
-  overflow: hidden; /* removes horizontal & vertical scrollbars */
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;  /* prevent scrollbars */
+  position: relative; /* ensures children positions are calculated from top-left */
 }
 
 
@@ -139,23 +143,27 @@ body {
   overflow: hidden;     /* cut off anything outside */
 }
 .wrapper {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;  /* clip anything that sticks out */
+  position: fixed;   /* fixed keeps it anchored to viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;  /* clip anything outside */
+  z-index: 0;        /* base layer */
 }
 #physicsArea {
+  position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
 }
 .home-image5 {
+ position: absolute;
   top: -232px;
   left: 469px;
   width: 494px;
   height: 769px;
   margin: auto;
-  position: absolute;
   object-fit: cover;
   user-select: none;
   -webkit-user-drag: none;
